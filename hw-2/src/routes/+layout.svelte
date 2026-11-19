@@ -9,4 +9,10 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
+<nav>
+	<a href="/">Home</a>
+	<a href="/todos">Todos</a>
+	<a href="/done">Completed</a>
+</nav>
+
 {@render children()}
