@@ -1,14 +1,16 @@
-import * as database from '#lib/server/database.js';
+import * as database from '#lib/server/database.ts';
+import type { LayoutServerLoad } from './$types';
 
-export function load({ cookies }) {
-	let userid = cookies.get('userid');
-
-	if (!userid) {
-		userid = crypto.randomUUID();
-		cookies.set('userid', userid);
+export const load: LayoutServerLoad = async ({ locals }) => {
+	if (!locals.user) {
+		return {
+			user: null,
+			items: []
+		};
 	}
 
 	return {
-		items: database.getItems(userid)
+		user: locals.user,
+		items: await database.getItems(locals.user.id)
 	};
-}
+};

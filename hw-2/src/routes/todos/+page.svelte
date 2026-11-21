@@ -5,7 +5,7 @@
 </script>
 
 <div class="centered">
-	<h1>My Christmas List</h1>
+	<h1>My Christmas List 🎄</h1>
 
 	{#if form?.error}
 		<p class="error">{form.error}</p>
